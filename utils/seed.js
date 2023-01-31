@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 const { User, Thought } = require('../models');
-// const { getRandomUser } = require('./data');
+const { getRandomUser } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -19,8 +19,7 @@ connection.once('open', async () => {
   console.log("newUsers: ", newUsers);
 
   await Thought.collection.insertOne({
-    thoughtName: 'UCLA',
-    inPerson: false,
+    thoughtName: 'I had a dream in time gone by',
     users: [...newUsers.map(user => user._id )],
   });
 
